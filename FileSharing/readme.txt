@@ -6,6 +6,6 @@ Build lần lượt
 2. FileSharingClient
 3. FileSharingHost
 
-Copy tất cả các file FileSystemProtection.exe, FileSharingClient.exe, FileSharingHost.exe, test.der, test.cer vào cùng một folder
+Copy tất cả các file FileSystemProtection.exe, FileSharingClient.exe, FileSharingHost.exe, test.key, test.der (ở X509) vào cùng một folder
 
 Chạy file FileSharingHost.exe

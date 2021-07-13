@@ -1,0 +1,62 @@
+//Folder to single file encryption
+
+
+//mã hóa folder
+//<from>	: folder cần mã hóa
+//<to>		: nơi lưu	
+encrypt-folder -ef <from> <to>
+
+
+//giải mã folder
+//<from>	: folder đã mã hóa
+//<to>		: nơi lưu	
+decrypt-folder <from> <to>
+
+
+//truy cập folder đã mã hóa
+//<path>	: folder đã mã hóa
+open <path>
+
+
+//===================bên trong folder đã mã hóa================================================================
+
+//đổi đường dẫn
+//<path>	: đường dẫn (eg: Test/Folder1)
+cd <path>
+
+//hiển thị thông tin chung
+summary
+
+//show cấu trúc thư mục
+show
+
+
+//mở một file
+//<path>	: file cần mở
+open <path>
+
+
+//thêm file/folder
+//<from>	: file/folder mới
+//<to>		: nơi lưu (bên trong folder đã mã hóa)
+add <from> <to>
+
+
+//xóa file/folder
+//<path>	: file/folder cần xóa
+delete <path>
+
+
+//giải mã file/folder
+//<from>	: file/folder bên trong folder đã mã hóa
+//<to>		: folder của ổ cứng
+decrypt <from> <to>
+
+
+//đóng thư mục
+close
+
+//thoat ct
+quit
+
+

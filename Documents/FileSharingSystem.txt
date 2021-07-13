@@ -1,0 +1,169 @@
+Hướng dẫn sử dụng
+
+================================Mở file sharing system=====================================================================
+
+1. Mở file FileSharingHost.exe.
+2. Khi chưa có file save nào thì chọn 1, nếu có file save sẵn zòi thì chọn 2 zòi mở session lại bằng file đó.
+3. Nếu bên trên chọn 1:
+	1. Chọn network muốn chia sẻ
+	2. Nhập tên để hiển thị khi chia sẻ
+4. Đợi cho 1 cái console mới hiện lên, nhập các lệnh vào cái console mới hiện lên đó, console cũ chỉ để xem thông báo.
+
+
+***Các lệnh:
+
+*Viết tắt: File Sharing System --> FSS
+
+================================Bên ngoài folder được chia sẻ==============================================================
+Lúc cái console mới hiện lên
+
+1. Đổi đường dẫn:
+
+	cd <path>
+
+
+2. Quét các FSS đang chia sẻ trên mạng
+
+	scan
+
+
+3. Xem các FSS đã quét được
+
+	show
+
+*cột đầu tiên là số thứ tự
+
+
+4. Xem thông tin của 1 FSS vừa quét được
+
+	info <option> <param>
+
+<option>	: :s (sử dụng nếu muốn truy cập bằng số thứ tự còn không bỏ qua)
+<param>		: nếu truy cập bằng số thứ tự thì đây là một số, nếu không thì đây là tên (name)
+ví dụ: 	info :s 1 --> xem thông tin của FSS có số thứ tự là 1
+	info UiZoiOi --> xem thông tin của FSS có tên là UiZoiOi
+
+
+5. Chia sẻ 1 folder của mình
+	share <path>
+
+<path> : path đến folder muốn chia sẻ.
+
+
+6. Xem các folder đã được chia sẻ của mình
+
+	my-sharing
+
+
+7. Tham quan một folder đã được chia sẻ của sharing system khác
+
+	goto <option> <param>
+
+<option>	: :s (sử dụng nếu muốn truy cập bằng số thứ tự còn không bỏ qua)
+<param>		: nếu truy cập bằng số thứ tự thì đây là một số, nếu không thì đây là tên (name)
+ví dụ: 	goto :s 1 --> tham quan FSS có số thứ tự là 1
+	goto UiZoiOi --> tham quan FSS có tên là UiZoiOi
+
+
+================================Bên trong 1 FSS được chia sẻ================================================================
+(sau khi gọi lệnh "goto" bên trên)
+
+8. Xem thông tin chung
+
+	info
+
+
+9. Truy cập một folder
+
+	access <type> <option> <param> 
+
+<type>		: :nf/:ef, :nf nếu muốn truy cập đến public folder, :ef nếu muốn truy cập đến protected folder
+<option>	: :s (sử dụng nếu muốn truy cập bằng số thứ tự còn không bỏ qua)
+<param>		: nếu truy cập bằng số thứ tự thì đây là một số, nếu không thì đây là tên (name)
+ví dụ: 	access :ef :s 1 --> truy cập protected folder thứ nhất
+	access :nf UiZoiOi --> truy cập public folder có tên là UiZoiOi
+
+
+10. Rời đi
+
+	leave
+
+================================Bên trong 1 folder của FSS được chia sẻ========================================================
+
+11. Xem cấu trúc folder
+
+	show
+
+
+12. Đổi đường dẫn
+
+	cd <path>
+
+
+13. Lấy một file/folder về máy
+
+	pull <from> <to>
+
+<from>		: đường dẫn đến file/folder cần lấy
+<to>		: đường dẫn đến 1 folder trên máy
+
+14. Thoát khỏi thư mục này
+
+	close
+
+=================================Thoát chương trình================================================================================
+
+15. Save lại session hiện tại để lần sau không phải config lại
+
+	save <to>
+
+<to>		: path đến folder sẽ lưu file save
+
+
+16. Thoát
+	
+	quit
+
+*Thêm
+Dùng trình duyệt có thể truy cập được đến địa chỉ IP của 1 FSS.
+
+=================================Thêm==============================================================================================
+
+17. Hỏi password (dùng được sau khi gọi "goto")
+
+	ask-pw <option> <param>
+
+<option>	: :s (sử dụng nếu muốn truy cập bằng số thứ tự còn không bỏ qua)
+<param>		: nếu truy cập bằng số thứ tự thì đây là một số, nếu không thì đây là tên của folder cần hỏi password
+ví dụ: 	ask-pw :s 1 --> hỏi password của folder đã mã hóa số 1
+	ask-pw UiZoiOi --> hỏi password của folder có tên UiZoiOi
+
+
+18. Chia sẻ password 
+	
+	give-pw <folder name> <option> <param>
+
+<folder name>	: tên folder để chia sẻ password
+<option>	: :s (sử dụng nếu muốn truy cập bằng số thứ tự còn không bỏ qua)
+<param>		: nếu truy cập bằng số thứ tự thì đây là một số, nếu không thì đây là tên của người dùng để chia sẻ password
+ví dụ: 	give-pw Repo :s 1 --> chia sẻ password của folder Repo đến người dùng thứ 1 trong danh sách (dùng scan/show để duyệt/hiển thị danh sách)
+
+
+19. Hiển thị password đã nhận
+
+	show-pw
+
+
+20. Gửi tin nhắn
+
+	send <option> <param> <msg>
+
+<option>	: :s (sử dụng nếu muốn truy cập bằng số thứ tự còn không bỏ qua)
+<param>		: nếu truy cập bằng số thứ tự thì đây là một số, nếu không thì đây là tên của người dùng khác
+<msg>		: tin nhắn cần gửi
+ví dụ: 	send :s 1 Hello World --> gửi thông điệp "Hello World" đến người dùng thứ 1 trong danh sách người dùng
+
+21. Mở FileSystemProtection
+
+	file-system-protection
+

@@ -1,0 +1,31 @@
+//đổi đường dẫn hiện tại
+cd ..\
+
+//show cấu trúc thư mục
+show
+
+//lưu cấu trúc thư mục
+save-structure file.structure
+
+//print lại cấu trúc vừa lưu
+print-structure file.structure
+
+==========================================================================================================================================================================================
+
+//encrypt 1 folder sang 1 folder khác
+//<path from>	: folder cần encrypt
+//<path to>	: nơi lưu
+encrypt-folder <password> <path from> <path to>
+
+//encrypt 1 folder sang 1 file zuy nhất
+encrypt-folder -ef <password> <path from> <path to>
+
+//mở và xem cấu trúc folder của folder đã được encrypt
+open <password> <path>
+
+
+//decrypt 
+//<path from>	: folder đã được encrypt
+//<path to>	: nơi lưu
+decrypt-folder <password> <path from> <path to>
+

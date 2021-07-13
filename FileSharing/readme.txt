@@ -1,4 +1,5 @@
-Hướng dẫn build
+Mã nguồn cần được build cùng OpenSSL
+https://github.com/openssl/openssl
 
 Build lần lượt
 

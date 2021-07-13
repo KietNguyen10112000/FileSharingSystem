@@ -68,15 +68,15 @@ FileSharingHost::FileSharingHost()
 //    m_server = new FileSharingServer(L"");
 //#endif // !_DEBUG
 
-    InitFSServer();
-
-    m_localConnection = new __LocalConnection();
-    *m_localConnection = InitConnection();
-
     wchar_t buffer[_MAX_DIR] = {};
     GetCurrentDirectoryW(_MAX_DIR, buffer);
     m_currentDir = buffer;
 
+    InitFSServer();
+
+    m_localConnection = new __LocalConnection();
+    *m_localConnection = InitConnection();
+    
     m_server->m_host = this;
 
     InitTask();
@@ -270,6 +270,8 @@ void FileSharingHost::StartClientTrack(const std::wstring& prefix, const std::ws
     {
         Sleep(8);
     }
+
+    ((wchar_t*)m_localConnection->sendBuf)[1] = WCHAR_MAX - 5;
 
 }
 
@@ -797,7 +799,7 @@ void FileSharingHost::InitFSServer()
 
             auto pass = ::InputPassword();
 
-            auto folder = path.substr(0, path.find_last_of(L'\\'));
+            auto folder = m_currentDir;
 
             TempFile tempFile(folder);
 

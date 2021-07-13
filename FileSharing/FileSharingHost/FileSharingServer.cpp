@@ -557,7 +557,11 @@ std::fstream* FileSharingServer::GetNormalFstream(const std::wstring& relativePa
 
 	auto filePath = file->Path();
 
-	auto totalBytes = GetFileSize(filePath);
+	//fs::file_size(filePath);
+
+	if (!fs::exists(filePath)) return nullptr;
+
+	auto totalBytes = fs::file_size(filePath);
 
 	((_ExtendResource*)resource)->var1.totalBytes = totalBytes;
 
@@ -753,10 +757,14 @@ void FileSharingServer::Launch()
 							conn->Send(((char*)&resrc->response[0]),
 								resrc->response.size());
 
+							Sleep(300);
+
 							server->Close(conn);
 						}
 						else
 						{
+							size_t oriSize = resrc->response.size();
+							resrc->response.resize(10);
 							resrc->response[0] = 'O';
 							resrc->response[1] = 'K';
 							//resrc->response.resize(2 + 8);
@@ -770,6 +778,8 @@ void FileSharingServer::Launch()
 							else resrc->maxWait = -2;
 
 							conn->Send(((char*)&resrc->response[0]), 10);
+
+							resrc->response.resize(oriSize);
 						}
 						
 					}
